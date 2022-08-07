@@ -45,15 +45,49 @@ D) The floorplanning involves the setting up of die area,core area,aspect ratio,
   
     In the magic layout: Press 'S' to select perticular object on the layout. 
     Tkcon opens parallely with magic layput window. The tkcon prompt facilitates various opeartion of the layout. 
-    To zoom in press right mouse click followed by left mouse click to make a rectangle box surronding an area to zoom in . To zoom out to normal view press v.
+    To zoom in press right mouse click followed by left mouse click to make a rectangle box surronding an area to zoom in. 
+    To zoom out to normal view press v.
     
   E) Placement :
     Floorplan ensures I/O pin placing, dcaps whereas placement ensures the placement of standard cells. 
     There are two stages of the placement- A) Global B )Detailed  Placement
     Legalization happens in the detailed placement. Legallization ensures: 
-    1. Standard cells are placed exacyly in the rows 2. Standard cells are placed very adjacent to each other 3. No overlapping between the standard cells.
+    1. Standard cells are placed exacyly in the rows 
+    2. Standard cells are placed very adjacent to each other 
+    3. No overlapping between the standard cells.
     
     Run placement: % run_placement
+    
+    To chek the layout in the magic:
+   /placement $ magic -T <tech file> <lef file> <def>....(same as in the floorplan stage)
+    
+    
+    Characterization Flow: Circuit Design -> Layout Design -> Characterization (timing,Noise,Power)
+    
+    Inverter Characterization:
+    
+    Layout of the inverter in the magic: The first step inmagic layout tool is to create a box defining the cell width and height.
+    on tkcon : % propoerty Fixed_BBox {0 0 138 272}
+               % box     // to check dimensions
+    PMOS layer :
+    1. The licon is the contact between metal-I and locali layer
+    2. nsubstratecontact is the contact between locali and Nwell
+    
+    NMOS layer:
+    1.psubstratecontact is the contact between locali and psubstrate
+    2. licon is the contact between Metal I and locali
+    
+    Spice extracted netlist of inverter::
+    To extract the spice netlist from layput on tkcon execute following:
+    % extrcat all
+    %ets2spice cthresh 0 rthresh 0
+    
+    
+    
+    
+    
+    
+    
     
     
     
