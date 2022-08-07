@@ -80,7 +80,33 @@ D) The floorplanning involves the setting up of die area,core area,aspect ratio,
     Spice extracted netlist of inverter::
     To extract the spice netlist from layput on tkcon execute following:
     % extrcat all
-    %ets2spice cthresh 0 rthresh 0
+    % ext2spice cthresh 0 rthresh 0
+    %ext2spice
+    
+    
+    Inveter Spice deck:
+    Adding tran analysis in the spice deck
+    
+    
+    Running spice deck on ngspice:
+    ngspice-> plot y vs time a
+    
+    Timing analysis:
+    
+    1.in_rise_thr: 50% of the vdd of the rising edge of the input pulse=4.0049ns
+    2.out_fall_thr:50% of the vdd of the falling edge of the output pulse=4.0132ns
+    3.in_fall_thr: 50% of the vdd of the falling edge of the input pulse=2.067ns
+    4.out_rise_thr:50% of the vdd of the rising edge of the output pulse=2.086ns
+    The propagation time is the difference of the (1 and 2)= 83ps
+   
+    
+    slew_low_rise_thr:2.06121ns
+    slew_high_rise_thr:2.10548ns
+    tr=44.27ps
+    slew_low_fall_thr=4.01618ns
+    slew_high_fall_thr=4.01161ns
+    tf=4.57ps
+    
     
     
     
