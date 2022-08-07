@@ -28,7 +28,36 @@ C) % run_synthesis
  
 D) The floorplanning involves the setting up of die area,core area,aspect ratio, utilization factor, placing of I/Os, macro placements.
   % run_floorplan  --To run the floorplan
-  the def file is created in the /picorv32a/runs/<date>/results/floorplan directory
+  
+  The def file is created in the /picorv32a/runs/<date>/results/floorplan directory
+  
+  The die area-  Unit distance microns 1000
+                 (0 0) (660685  671405)
+  It gives the area (660685/1000)*(671405/1000) Sq. Micrometer
+  
+ Magic tools is used for layout. To open magic : $ magic -T <tech file 1> <lef read file2> <def file3> &
+  
+  <file1>: it is the tech file present in the pdks. the tech file location here is: /pdks/sky130A/libs.techmagic/sky130A.tech
+  <file2>: it is the (merged) lef file in the picorv32a/runs/<date>/tmp directory
+  <file3>: def file created post floorplan in the floorplan directory in the /picorv32a/runs/<date>/results/
+    
+  These three are the input files to generate layout in the magic
+  
+    In the magic layout: Press 'S' to select perticular object on the layout. 
+    Tkcon opens parallely with magic layput window. The tkcon prompt facilitates various opeartion of the layout. 
+    To zoom in press right mouse click followed by left mouse click to make a rectangle box surronding an area to zoom in . To zoom out to normal view press v.
+    
+  E) Placement :
+    Floorplan ensures I/O pin placing, dcaps whereas placement ensures the placement of standard cells. 
+    There are two stages of the placement- A) Global B )Detailed  Placement
+    Legalization happens in the detailed placement. Legallization ensures: 
+    1. Standard cells are placed exacyly in the rows 2. Standard cells are placed very adjacent to each other 3. No overlapping between the standard cells.
+    
+    Run placement: % run_placement
+    
+    
+    
+  
 
 
 
