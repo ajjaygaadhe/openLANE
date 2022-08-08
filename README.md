@@ -159,8 +159,38 @@ Timing analysis:
 ![tf_low_inverter](https://user-images.githubusercontent.com/55655753/183445115-f99c8354-b577-47d7-9d6c-0d53930c8ed5.PNG)
 ![tr_inverter_high](https://user-images.githubusercontent.com/55655753/183445119-9d1c6add-74ce-47aa-89ba-21967ec16163.PNG)
 ![tr_inverter_low](https://user-images.githubusercontent.com/55655753/183445124-d9310874-ff29-4691-8cce-9da43c7cfe4e.PNG)
+  
+Converting labels to ports in inverter:
 
-    
+Press 'g' to activate grid on the layout
+
+tkcon - % grid 0.46um 0.34um 0.23um 0.17um   setting up of the grid according to th etrack information available in track.info
+
+select input 'A' in the layout where port is to be defined. Edit and select text to define port number and metal layer. The same is to be done for the output 'Y', power and ground terminal. 
+
+Next step is to define the purpose of the ports defined.
+Select the port and on tkcon execute %port class and % port use
+  
+![labeltoport_Y](https://user-images.githubusercontent.com/55655753/183453903-7297d636-a199-4972-a90c-749269eadbb2.PNG)
+![inverter in defined grids](https://user-images.githubusercontent.com/55655753/183453889-7f0fd19e-b866-488a-a852-8fa4abb1c9c3.PNG)
+  
+CTS:
+% run_cts
+  
+Enter into openroad: 
+  
+% openroad
+  
+% read lef i.e merged lef in /tmp
+  
+%read def  i.e obtained post cts
+  
+% write_db pico_cts.db  (db is created)
+  
+In openalen flow PDN, power distribution network is happened post cts
+%gen_pdn
+
+% run _routing  
     
     
     
